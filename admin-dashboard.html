@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from coderthemes.com/aeropage/admin-dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 Aug 2025 02:57:47 GMT -->
+<head>
+   <meta charset="utf-8" />
+   <title>AeroPage - Tailwind CSS Multipurpose One Page Landing Template</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta content="Tailwind CSS Saas & Software Landing Page Template, Portfolio, business, clean, modern, multipurpose, tailwind css." name="description" />
+   <meta content="coderthemes" name="author" />
+   
+   <!-- Theme favicon -->
+   <link rel="shortcut icon" href="assets/favicon-b2cb7bc5.ico">
+    <!--  Head js -->
+    
+  <script type="module" crossorigin src="assets/admin-dashboard-f0a584ab.js"></script>
+  <link rel="modulepreload" crossorigin href="assets/theme-3a535b87.js">
+  <link rel="stylesheet" href="assets/theme-e2a9673d.css">
+</head>
+
+<body class="bg-default-50">
+
+    <header class="sticky top-0 z-50">
+        <div class="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-zinc-950 border-b border-default-200 text-sm py-2.5 sm:py-4">
+            <nav class="container flex items-center justify-between w-full gap-6">
+                <div>
+                    <a href="index.html" class="block">
+                        <img src="assets/logo-light-82928a21.png" class="h-8 flex" alt="images">
+                    </a>
+                </div>
+    
+                <div class="flex items-center gap-3">
+                    <div class="hidden lg:block relative">
+                        <i data-lucide="search" class="h-4 w-4 text-zinc-400 absolute top-1/2 -translate-y-1/2 start-3"></i>
+                        <input type="search" class="h-10 w-full border-0 bg-zinc-800 ps-11 pe-4 text-zinc-300 rounded-full placeholder-zinc-400 focus:ring-0 sm:text-sm" placeholder="Search...">
+                    </div>
+        
+                    <!-- Fullscreen Button -->
+                    <div class="sm:flex hidden">
+                        <button data-toggle="fullscreen" type="button" class="inline-flex flex-shrink-0 justify-center items-center gap-2 h-9 w-9 rounded-md font-medium text-zinc-200 align-middle hover:bg-white/10 transition-all duration-300">
+                            <i data-lucide="maximize" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+        
+                    <!-- Notification Dropdown -->
+                    <div class="sm:flex hidden">
+                        <div class="hs-dropdown relative inline-flex [--placement:bottom-right]">
+                            <button id="hs-dropdown-with-header" type="button" class="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center gap-2 h-9 w-9 rounded-md font-medium text-zinc-200 align-middle hover:bg-white/10 transition-all duration-300">
+                                <i data-lucide="mail" class="w-5 h-5"></i>
+                                <span class="absolute -top-0 -end-0 h-4 w-4 bg-primary text-xs rounded-full font-medium text-white">2</span>
+                            </button>
+        
+                            <div class="hs-dropdown-menu mt-2 transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-[20rem] shadow-md rounded-lg border border-default-200 bg-white dark:bg-default-50">
+                                <div class="px-4 py-3 flex items-center justify-between">
+                                    <h6 class="text-base font-semibold text-default-900">Messages</h6>
+                                    <a href="javascript: void(0);" class="text-default-800 font-semibold border-b border-dashed border-default-300">
+                                        <small>Clear All</small>
+                                    </a>
+                                </div>
+        
+                                <div class="h-52 py-2 overflow-y-auto border-y border-dashed border-default-200 [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-default-300">
+                                    <a class="flex items-center py-4 px-2 mx-2 rounded transition-all duration-200 hover:bg-default-100">
+                                        <span class="w-9 h-9 inline-flex items-center justify-center rounded-full bg-primary/20 text-primary"><i data-lucide="alert-octagon" class="w-5 h-5"></i></span>
+                                        <span class="px-3">
+                                            <h6 class="text-sm font-semibold text-default-800">Check this out!</h6>
+                                            <p class="text-xs text-default-600">Please review this file.</p>
+                                        </span>
+                                    </a>
+                                    <a class="flex items-center py-4 px-2 mx-2 rounded transition-all duration-200 hover:bg-default-100">
+                                        <span class="w-9 h-9 inline-flex items-center justify-center rounded-full bg-teal-500/20 text-teal-500"><i data-lucide="shield-half" class="w-5 h-5"></i></span>
+                                        <span class="px-3">
+                                            <h6 class="text-sm font-semibold text-default-800">Congratulations!</h6>
+                                            <p class="text-xs text-default-600">Your OS System successfully updated.</p>
+                                        </span>
+                                    </a>
+                                    <a class="flex items-center py-4 px-2 mx-2 rounded transition-all duration-200 hover:bg-default-100">
+                                        <span class="w-9 h-9 inline-flex items-center justify-center rounded-full bg-red-500/20 text-red-500"><i data-lucide="shield-half" class="w-5 h-5"></i></span>
+                                        <span class="px-3">
+                                            <h6 class="text-sm font-semibold text-default-800">An error occurred</h6>
+                                            <p class="text-xs text-default-600">There was a problem in your code.</p>
+                                        </span>
+                                    </a>
+                                </div>
+        
+                                <a href="javascript:void(0);" class="px-4 py-3 block text-center text-primary font-medium text-sm">
+                                    View All
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Language -->
+                    <div class="sm:flex hidden">
+                        <div class="hs-dropdown relative inline-flex [--placement:bottom-right]">
+                            <button id="hs-dropdown-with-header" type="button" class="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center gap-2 h-9 w-9 rounded-md font-medium text-zinc-200 align-middle hover:bg-white/10 transition-all duration-300">
+                                <i data-lucide="layout-grid" class="w-5 h-5"></i>
+                            </button>
+        
+                            <div class="hs-dropdown-menu mt-2 transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-[12rem] shadow-md rounded-lg border border-default-200 bg-white dark:bg-default-50 p-2">
+                                <div class="grid grid-cols-3 gap-3">
+                                    <a class="flex flex-col items-center justify-center gap-1.5 py-3 px-6 rounded-md text-sm text-default-800 hover:bg-default-100" href="#">
+                                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAeCAMAAACR41cYAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAJ/UExURUdwTCEgIB8fHyAfHyAfHyAfHyAfHx8eHiAfHx8eHiAfHyAfHyAfHx8eHiAfH5jU5h8eHiAfHyAfHyAfHx8eHh8eHiAfHyAfIAQBAxgWFiEhISEgIAwCACAgIB0bGi40NhkVFCAfH5za8FBncENVXKTm95vZ8Jza8J7c8R0bGhMTEx0cHCAfHyEgH73//yEgIJ7c8QAAAIfF6TM7PwwJCh4cHHm45SAfHyAfH5za8CAfH5za8Jza8Jza8Jza8CAfH5za8G6VokRVWxIKCJza8JvY7pza8DtITTlFSZ3b8AMHCgAABJza8ElBPDA4PFVLRK3z/zEvLRcXGEVBPTA5PJza8AADB5vZ74XD6QIAAIrJ67T+/4HA6BAIByAfH4zK7IrI6zE4O7D5/yAfHwEAACIgIJza8BUWGAACBhoaGvXLsQ0PEZ/g957c8RATFf/oy1p4hfzRticqLIC+6Jrm///jxiMiIvDEq//Xu/bHq//fxG5eVRgXF////P/z0P/22lNHQv/gv//877H5/xcTEhUOC76cicyolCcjIf/avdivlpvY7mZaUQMHC1lNRfrNsPTJr//o0v/cwf3WuHtnXIshF4VuYvTEqfrcyM+oqOrW1PTm4v716zM7PqHf8v/t1SkpJsD//1RueGebxaPn/IXK/TVIV3OapbmXheK0mNuymv/GrdWZhu/Tx+u7pI54adymkf/658+dlMifn+S1mafq+7uhizYvLeLCufLs7/rk1mNVTf/NrtOskqeHd8aXlXFgVv/kwZU1LNW1neK9tJAuJsCMirJwa+nKv9zFx2CRtVuKronG6naszSUnKUZaZG+TmUFPU3agr3GkxIu8xSfH+3sAAABzdFJOUwD97RwqJTMat/4VL6DlCwmSOh2qV77yhGEIms8njIj9+xEk6wESA6CMcwRtUGQlwnjIs9iu9u3fsS5e3hvwhB66hguP9eJfotdT9nPf4o7mPNW62Kc/5MnTMeRzzcTG3/LkYv////////////////////54WQMpAAACTklEQVQYGXXABVMiYRgA4BdYdhkExa5TR8Xuvu7u7v5g2V06XFGxO7C72+vu7s74Qaczd87sIg/85yeUJMMCsUK+FFzIEEISvwSZxF8iSwpEczyBT4L4xMAXhniE4CIQ8QRgwCMWID458PgipEYag0ZD07TGYHCgOcuBI1GIWA3lqEcOrVbrUNdXUzSLfIHDB7EG7fXGi411tRdq6y7dedrl1KjTgGMNop3PSm+WGO35+fkNHSUlpT0U8geO4ABneUX7w9tXWxmGKXzU/7HyyX2tBLhCVT0vh/q7b7W3MW1Fb169H6p4TIXAP1IRQfiIMV/qRUXl8+4HHUwnY//w9l1lZ7kzHBP7EIRICpg3juMemLd2zGwcHOjrLbjB9PYNDI72sgYc88Bx3BsDQiSN9FQCpFDFxrKyVvO1KwXmwtGy0i4qBUDpGSkVEbDA73D5vYIGo/2y3Vhkfl28PQl4NoQABAdl79vV0lzc3LLnwP4dBPB4rbNkwbwM1byMRHAVk7qe3gIAyWpWIBCwKAgWFTS8dfdBQY5cIMsRsv6wuARLhIU+rUBhKCQgFNwIPrYkTR6uVqjD80LBvWxhIFKgsLxT4IYy9XyWJbo6ujo64tyJvbGwiM1H9OM/kalmosb0bXhct2m1F/DExpG6KZPqxy/Vd9XsrGriro5cEQVcUSSp05s+T0XU/HGM6T6Z9DqSjAcur7Vkk77KNjnzu+rrzKStSt9ErloGfOk7yRGr1Tb9ZdpmtY6QG+NWgivlofTMk2dyz+YeP5oZvy0GFvwFlSbPVswTomsAAAAASUVORK5CYII=" class="h-6" alt="Github">
+                                        <span>GitHub</span>
+                                    </a>
+        
+                                    <a class="flex flex-col items-center justify-center gap-1.5 py-3 px-6 rounded-md text-sm text-default-800 hover:bg-default-100" href="#">
+                                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAdCAMAAABopjdHAAAAwFBMVEVHcEwAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4MAT4Mri5Y4AAAAP3RSTlMAIwhydxy28hIWIc+je6u9P/b9BUziKJcMxKdZAjyMXjfXu8Hm1eou2t0z+rKRRq+A7my6Qp/M34PrU1YPiL7YsJ9AAAABbUlEQVQYGW3Bh3aiQAAF0EedoSMiYu+isdcka7Lv//9qYTib3eR4LwB9b9yilWBtefeN2NFR6h3WJOfeLIqizn3REiQXgdaEMSdb5uiaWTLXc+mOH5+XOSlGaJDJDN+NSJ7QILn0zcegcJ2SpWUvaZcleFROk44d+jf/MF1sWHlHl895OPI5GyM+10bML97US/iXiazB2jIo8uJtzlqSQptQWZ6hxzoMQaU1gGVTCfUsbPnaR0hllkG2WUkCmCQDmFRuEk2TlcSESdJAQCVoAj0q4YfWXrRduaXyC0BKRQRAARwFK5sxAGdL5X0YW/HniUrkomQNWVt11lQ2swFq4+GK/7RsA7XrzkKWGu3Q/h3Z4c7YQw5yVHpiYTpAX1quJZuATKO1hsqLR+H556smc6mNH0c74dZBxbFZEuv77DLtTARLZx2Vvs+f4j6UIX+yUCte+V03R60/PvA/ouvii7N/m742yESsLrtejsofWqVrkBSdwYAAAAAASUVORK5CYII=" class="h-6" alt="bitbucket">
+                                        <span>Bitbucket</span>
+                                    </a>
+        
+                                    <a class="flex flex-col items-center justify-center gap-1.5 py-3 px-6 rounded-md text-sm text-default-800 hover:bg-default-100" href="#">
+                                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAhCAMAAABkz+JgAAAAxlBMVEVHcEwAfuYAfuYAfuYAfuYAfecAfuYAfuYAfuYAfuYAfuYAfuYAfuYAfuYAfuYAfuYAfuYAfuYAfuYAfuYAfuYAfuYAfuYAfuYAfuYAfuYAfuUAfuYAfuYAfuYAfuYAfuYAfuYAfuYAfuYAfuYAfuYAfuYAfuYAf+UAfuYAfuYAfuYAfuYAfuYAfuYAfuYAf+YAfuYAfuYAfuYAfuYAfuYAfuYAfuYAfuYAfuYAfuYAfuUAfuYAgOcAfuYAfeYAf+YAfuYAfuZXV9ysAAAAQXRSTlMACxEy+QLr/PX+2xgHGh58vjZgQeTHDu1k6RWMKIbTudej4Jipy0cFcPPvL3MkTBNn0HfFVq5Q6LVrOh8GnFk8kkQ6JVUAAAGsSURBVBgZfcEHgppAAAXQjw4Mgi5iD/Yu9o6uW/Lvf6kgiowmm/cQq3y1G0g0hvMKXuTaksESMdei2LhQaWuTIbOQxZW+9xnyJys8NMqCEVHXAYybPiNyOMNNZW3wYWBjVZeMmVsPocVOMiE3bl4yITdpYFSlShyKXZ8qs4ZcmYrSKIvxd4+KzQXQ+oJ31X4OV5VmlXdyYCM0rklGrLSOG/0tz4jcZnGz7JEMnCwS2sQiWSroiHlDnlY6nngDGjMo3tseXun9dyi8jiyn8MzeyamLh31A0ndSSKQmPZJBLYuI7kheZaouYpcWI7KJK+9T8M7sL3CVq5uMHS5ArkOFudeB4pSK0gWjElXiMOoKqn6tgVReMpEZvuUzTMjWBSGt1mMs8zmrp+uCselcw01uJxkRzqXDanouGJFlGw/jQsCQUThaJIPC0WAoOKeg0k6SRnHpM+I0LMrWAs/m6a/urCl4I7ru6ewV8KxtLO0uE3m7OG3j2dmXFlWdKZt44bYEVZlOEX/RagYTxsTGv1S6Pm/MfAM/+CiWeWUds/jZh1Oi8VvDf+mLbVrHsz8x4n90MIcLhQAAAABJRU5ErkJggg==" class="h-6" alt="dropbox">
+                                        <span>Dropbox</span>
+                                    </a>
+        
+                                    <a class="flex flex-col items-center justify-center gap-1.5 py-3 px-6 rounded-md text-sm text-default-800 hover:bg-default-100" href="#">
+                                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjcyRkZFQkNBN0ZEQjExRUFBQkZFRTE0QTM2ODU3MjVDIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjcyRkZFQkNCN0ZEQjExRUFBQkZFRTE0QTM2ODU3MjVDIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NzJGRkVCQzg3RkRCMTFFQUFCRkVFMTRBMzY4NTcyNUMiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NzJGRkVCQzk3RkRCMTFFQUFCRkVFMTRBMzY4NTcyNUMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5H2OddAAAJTUlEQVR42qxZa2xcRxU+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" class="h-6" alt="slack">
+                                        <span>Slack</span>
+                                    </a>
+        
+                                    <a class="flex flex-col items-center justify-center gap-1.5 py-3 px-6 rounded-md text-sm text-default-800 hover:bg-default-100" href="#">
+                                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAMAAAAM7l6QAAAA0lBMVEVHcEzEI2HDI2HDI2HEI2HDI2HDI2HEI2HDImHDI2HDI2HDImDDI2HEI2HDI2HDI2HDI2HEI2HDI2HDI2HDI2HDI2HDI2HDI2HDI2HDI2HDI2HEJGLDI2HDI2HDI2HqTInxU5C9HFq7GlnyVJHEI2HpS4jwUY/BIV/tTou3FlTCImDzVZK6GVfUNXPfP32+HVziQ4DaOnjrTYrFJWO/Hl3MLGrKKmjAH17uUI3cPXrXN3XSMnC1FFLoSYf1V5T4WpfPLm3mR4TIKGbQMG7wU5DqS4gW3fYwAAAAH3RSTlMAlnPA0mVNzNyLQuQo7zUfxPFVXWx6pPMCRX/1A3yvLDJKvgAAAk1JREFUGBllwIV2GmkUAOAbIUD8bCrp2v1dx10ZBmbf/5WW0DZtTz/44X518fzwef3pwyP87uZKiJhRSlns1iv41f2Vpk73bdumYVUwff0FfvKS07rUNJz4wrlJwpqJj/Dug2D5vNsHrPUS0Sx+rgqxhW/+EKxsuMpEoKWSiCj5rqTiTzh7EqzkSkof0WBPMkRpfORYIW7hzZrmjZKIGd8HrPUSCe8Cmx7pA5zcOpp4iYhSSRfkxvOxtDacUNeXALBmR45n0reUhSaMh7jlxnfsAeDJ0YRjZoxaiG8OsXBDsB95JtWs9S2s4spz1Rg5R+mxcrWu99Gi8ETt6RYu6qrr92WV18wOVuSFyHYZZojIU/YMVzkdBmstK0QVtpgUQTepE0KmhG5go8uwD8M0SkZD/LQrg7zrj8c+TJO0voMNjSa1ELIoY3jT9rlzwWCtHQZbizu4oinHN7LhyYENTNeHtG3bri+F28AFCwmeyKXpmaWHJAxytVsIX3YpfYZVcTAGUfLxYIND1ExzwVqOJ7ynW3hycUJQ8lnbuGu8yZrSlipDbEanvwCsWe8lH7XViTcSkXc2Hw1Kn7LPrwA3ukimLB/c6PGNSmIaEakyV/wDJ9e08v2gR49nBnPbEeP37K9XOLkX9UHTyP+HXy29LdWuY+4Gzl5EHKQTfsfTIDcp01v46vVSFOXsVYZnZK5FVegLeLcStAjnhpNlIZwkoo7dFn7yuNasLrs2itq0dE5sbuBXL2tHGY1jyqjeXP4Nv3m8/LS+u7v+9+MtvPsfo0R0DDqUOxMAAAAASUVORK5CYII=" class="h-6" alt="dribbble">
+                                        <span>Dribbble</span>
+                                    </a>
+        
+                                    <a class="flex flex-col items-center justify-center gap-1.5 py-3 px-6 rounded-md text-sm text-default-800 hover:bg-default-100" href="#">
+                                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEsAAAAwCAYAAABZq4foAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDcuMS1jMDAwIDc5LmRhYmFjYmIsIDIwMjEvMDQvMTQtMDA6Mzk6NDQgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCAyMi41IChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0MEIzQUMzNEUxMzMxMUVEOTc3MUI2RUQ3MzkxNDAzOCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0MEIzQUMzNUUxMzMxMUVEOTc3MUI2RUQ3MzkxNDAzOCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjQwQjNBQzMyRTEzMzExRUQ5NzcxQjZFRDczOTE0MDM4IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjQwQjNBQzMzRTEzMzExRUQ5NzcxQjZFRDczOTE0MDM4Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+9iyX/gAAB9hJREFUeNrsWmts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" class="h-6" alt="Behance">
+                                        <span>Behance</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <!-- Profile Dropdown -->
+                    <div class="flex">
+                        <div class="hs-dropdown relative inline-flex ">
+                            <button id="hs-dropdown-with-header" type="button" class="hs-dropdown-toggle inline-flex flex-shrink-0 justify-center items-center gap-2 font-medium align-middle transition-all text-xs">
+                                <img class="inline-block h-9 w-9 rounded-full" src="assets/img-1-1e9aa300.jpg">
+                                <div class="lg:block text-start hidden">
+                                    <p class="text-sm font-bold text-white">Diane Berry</p>
+                                    <p class="text-xs text-zinc-400 font-semibold mt-1">Admin</p>
+                                </div>
+                            </button>
+        
+                            <div class="hs-dropdown-menu mt-2 transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-[12rem] shadow-md rounded-lg p-2 border border-default-200 bg-white dark:bg-default-50">
+                                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-default-800 transition-all hover:bg-default-100" href="#">
+                                    <i data-lucide="user" class="w-4 h-4"></i>
+                                    My Profile
+                                </a>
+                                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-default-800 transition-all hover:bg-default-100" href="index.html" target="_blank">
+                                    <i data-lucide="newspaper" class="w-4 h-4"></i>
+                                    Landing
+                                </a>
+                                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-default-800 transition-all hover:bg-default-100" href="#">
+                                    <i data-lucide="settings" class="w-4 h-4"></i>
+                                    Setting
+                                </a>
+                                
+                                <hr class="my-2 border-default-200 -mx-2">
+        
+                                <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-md text-sm text-red-400 hover:bg-red-400/10" href="auth-login.html">
+                                    <i data-lucide="log-out" class="w-4 h-4"></i>
+                                    Log out
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    
+        <nav class="admin-menu bg-white text-sm font-medium shadow-sm shadow-default-100 dark:bg-default-50 border-b border-default-200">
+            <div class="container py-2.5 snap-x w-full flex items-center overflow-x-auto mx-auto custom-scroll">
+                <div class="snap-center shrink-0 px-2">
+                    <a class="px-3 py-2 font-semibold rounded-full inline-flex items-center gap-2 transition-all text-default-600 hover:text-default-800 hover:bg-default-100 [&.active]:text-primary [&.active]:bg-primary/10" href="admin-dashboard.html">
+                        <i data-lucide="radar" class="w-5 h-5"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </div>
+                <div class="snap-center shrink-0 px-2">
+                    <a class="px-3 py-2 font-semibold rounded-full inline-flex items-center gap-2 transition-all text-default-600 hover:text-default-800 hover:bg-default-100 [&.active]:text-primary [&.active]:bg-primary/10" href="admin-chat.html">
+                        <i data-lucide="messages-square" class="w-5 h-5"></i>
+                        <span>Chat</span>
+                    </a>
+                </div>
+                <div class="snap-center shrink-0 px-2">
+                    <a class="px-3 py-2 font-semibold rounded-full inline-flex items-center gap-2 transition-all text-default-600 hover:text-default-800 hover:bg-default-100 [&.active]:text-primary [&.active]:bg-primary/10" href="admin-project.html">
+                        <i data-lucide="target" class="w-5 h-5"></i>
+                        <span>Project</span>
+                    </a>
+                </div>
+                <div class="snap-center shrink-0 px-2">
+                    <a class="px-3 py-2 font-semibold rounded-full inline-flex items-center gap-2 transition-all text-default-600 hover:text-default-800 hover:bg-default-100 [&.active]:text-primary [&.active]:bg-primary/10" href="ui-components.html">
+                        <i data-lucide="component" class="w-5 h-5"></i>
+                        <span>UI Components</span>
+                    </a>
+                </div>
+                <div class="snap-center shrink-0 px-2">
+                    <a class="px-3 py-2 font-semibold rounded-full inline-flex items-center gap-2 transition-all text-default-600 hover:text-default-800 hover:bg-default-100 [&.active]:text-primary [&.active]:bg-primary/10" href="index.html">
+                        <i data-lucide="snowflake" class="w-5 h-5"></i>
+                        <span>Landing</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section class="hidden md:block">
+        <div class="container">
+            <div class="bg-white border border-default-200 rounded-lg my-6 dark:bg-default-50">
+                <div class="flex justify-between items-center p-6">
+                    <h4 class="text-default-900 text-lg font-medium">Dashboard</h4>
+                    <div class="flex items-center justify-end gap-3">
+                        <div class="flex items-center gap-2">
+                            <a href="#" class="text-base font-medium text-default-900 hover:text-primary transition-all duration-200">Admin</a>
+                        </div>
+    
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="chevrons-right" class="h-5 w-5 text-default-900 rtl:rotate-180"></i>
+                            <a href="#" class="text-base font-medium text-default-900">Dashboard</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>    
+    <section>
+        <div class="container">
+            <div class="space-y-6 my-6">
+                <div class="grid lg:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-md border border-default-200 dark:bg-default-50">
+                        <div class="p-5">
+                            <div class="">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm text-default-600 font-medium">Today Revenue</span>
+                                    <span class="text-teal-500"><i data-lucide="trending-up" class="h-4 w-4 inline me-1"></i> +10.21%</span>
+                                </div>
+                                <div class="flex items-end justify-between gap-4">
+                                    <h3 class="text-3xl text-default-800 font-medium">$2100</h3>
+                                    <div id="today_revenue_chart" class="apex-charts"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-md border border-default-200 dark:bg-default-50">
+                        <div class="p-5">
+                            <div class="">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm text-default-600 font-medium">Product Sold</span>
+                                    <span class="text-red-500"><i data-lucide="trending-down" class="h-4 w-4 inline me-1"></i> -5.05%</span>
+                                </div>
+                                <div class="flex items-end justify-between gap-4">
+                                    <h3 class="text-3xl text-default-800 font-medium">558</h3>
+                                    <div id="toda_product_sold_chart" class="apex-charts"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-md border border-default-200 dark:bg-default-50">
+                        <div class="p-5">
+                            <div class="">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm text-default-600 font-medium">New Customers</span>
+                                    <span class="text-teal-500"><i data-lucide="trending-up" class="h-4 w-4 inline me-1"></i> +25.16%</span>
+                                </div>
+                                <div class="flex items-end justify-between gap-4">
+                                    <h3 class="text-3xl text-default-800 font-medium">65</h3>
+                                    <div id="today_new_customer_chart" class="apex-charts"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-6">
+                    <div class="bg-white rounded-md border border-default-200 dark:bg-default-50 overflow-hidden">
+                        <div class="inline-flex items-center bg-yellow-600/10 text-sm text-yellow-600 px-4 py-3 w-full" role="alert">
+                            <i data-lucide="party-popper" class="h-4 w-4 me-2"></i> 
+                            <span>Congratulations John.</span>
+                        </div>
+                        <div class="p-5">
+                            <div class="grid grid-cols-4 items-center justify-between">
+                                <div class="col-span-3 h-full">
+                                    <div class="flex flex-col items-start h-full">
+                                        <div class="grow mb-4">
+                                            <p class="text-lg text-default-900">You have done <span class="">68%</span>😎 more sales today</p>
+                                            <p class="text-base text-default-600">Check your new badge in your profile.</p>
+                                        </div>
+                                        <a href="#" class="shrink-0 inline-flex items-center justify-center py-2 px-6 text-sm text-center bg-teal-500 text-white hover:bg-teal-600 rounded-full transition-all duration-500">View Profile <i data-lucide="eye" class="h-4 w-4 ms-1"></i></a>
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <img src="assets/dashboard-hero-5234be1a.png" alt="" class="max-w-full h-full">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-md border border-default-200 dark:bg-default-50 overflow-hidden">
+                        <div class="px-4 py-3 flex justify-between items-center border-b border-default-200">
+                            <h4 class="text-lg text-default-900">Sources</h4>
+                            <a href="javascript:void(0);" class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-primary text-white transition-all duration-300 hover:bg-primary-700">Export <i data-lucide="upload" class="h-4 w-4 ms-1.5"></i></a>
+                        </div>
+
+                        <div class="">
+                            <table class="w-full">
+                                <thead class="bg-default-100 border-b border-default-200">
+                                    <tr>
+                                        <th class="p-2 text-start text-sm font-semibold text-default-900">Types</th>
+                                        <th class="p-2 text-start text-sm font-semibold text-default-900">Sessions</th>
+                                        <th class="p-2 text-start text-sm font-semibold text-default-900">Views</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y dark:divide-default-200">
+                                    <tr>
+                                        <td class="p-2">Direct</td>
+                                        <td class="p-2">358</td>
+                                        <td class="p-2">250</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2">Referal</td>
+                                        <td class="p-2">501</td>
+                                        <td class="p-2">50</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2">Email</td>
+                                        <td class="p-2">460</td>
+                                        <td class="p-2">600</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2">Organic</td>
+                                        <td class="p-2">920</td>
+                                        <td class="p-2">150</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div> <!-- end p-6-->
+                    </div>
+                </div>
+
+                <div class="grid lg:grid-cols-3 gap-6">
+                    <div class="lg:col-span-2">
+                        <div class="bg-white rounded-md border border-default-200 dark:bg-default-50">
+                            <div class="px-6 py-3 border-b border-default-200">
+                                <h4 class="text-lg text-default-900">Revenue</h4>
+                            </div>
+                            <div class="p-5">
+                                <div id="revenue_chart" class="apex-charts"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-md border border-default-200 dark:bg-default-50">
+                        <div class="px-6 py-3 border-b border-default-200">
+                            <h4 class="text-lg text-default-900">Top Performers</h4>
+                        </div>
+                        
+                        <div class="divide-y divide-default-200 h-[440px] overflow-y-auto
+                        [&::-webkit-scrollbar]:w-1
+                        [&::-webkit-scrollbar-track]:!bg-transparent">
+                            <div class="flex items-center p-2.5">
+                                <img src="assets/img-7-692f64cd.jpg" class="h-12 rounded-full me-3" alt="shreyu">
+                                <div class="flex-grow">
+                                    <h5 class="mt-1 text-default-900">Saske N</h5>
+                                    <h6 class="text-default-600 font-normal mt-1">Senior Sales Guy</h6>
+                                </div>
+                                <div class="h-4">
+                                    <div class="hs-dropdown relative inline-flex [--placement:left-top] rtl:[--placement:bottom-left]">
+                                        <button type="button" class="hs-dropdown-toggle rounded">
+                                            <i data-lucide="more-vertical" class="h-4 w-4"></i>
+                                        </button>
+
+                                        <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 min-w-[200px] transition-[opacity,margin] mt-4 opacity-0 z-10 bg-white shadow-lg rounded-lg border border-default-100 dark:bg-default-50 py-1.5 hidden">
+                                            <a class="flex items-center font-normal text-default-600 py-2 px-3 mx-1.5 transition-all hover:text-default-700 hover:bg-default-100 rounded" href="javascript:;">
+                                                <i data-lucide="pencil" class="h-4 w-4 me-1.5"></i>
+                                                <span>Edit</span>
+                                            </a>
+                                            <a class="flex items-center font-normal text-default-600 py-2 px-3 mx-1.5 transition-all hover:text-default-700 hover:bg-default-100 rounded" href="javascript:;">
+                                                <i data-lucide="log-out" class="h-4 w-4 me-1.5"></i>
+                                                <span>Remove from Team</span>
+                                            </a>
+                                            <hr class="my-2 border-default-200">
+                                            <a class="flex items-center font-normal text-red-500 py-2 px-3 mx-1.5 transition-all hover:bg-red-500/10 rounded" href="javascript:;">
+                                                <i data-lucide="trash-2" class="h-4 w-4 me-1.5"></i>
+                                                <span>Delete</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center p-2.5">
+                                <img src="assets/img-9-d264478d.jpg" class="h-12 rounded-full me-3" alt="shreyu">
+                                <div class="flex-grow">
+                                    <h5 class="mt-1 text-default-900">Greeva Y</h5>
+                                    <h6 class="text-default-600 font-normal mt-1">Social Campaign</h6>
+                                </div>
+                                <div class="h-4">
+                                    <div class="hs-dropdown relative inline-flex [--placement:left-top] rtl:[--placement:bottom-left]">
+                                        <button type="button" class="hs-dropdown-toggle  rounded">
+                                            <i data-lucide="more-vertical" class="h-4 w-4"></i>
+                                        </button>
+
+                                        <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 min-w-[200px] transition-[opacity,margin] mt-4 opacity-0 z-10 bg-white shadow-lg rounded-lg border border-default-100 dark:bg-default-50 py-1.5 hidden">
+                                            <a class="flex items-center font-normal text-default-600 py-2 px-3 mx-1.5 transition-all hover:text-default-700 hover:bg-default-100 rounded" href="javascript:;">
+                                                <i data-lucide="pencil" class="h-4 w-4 me-1.5"></i>
+                                                <span>Edit</span>
+                                            </a>
+                                            <a class="flex items-center font-normal text-default-600 py-2 px-3 mx-1.5 transition-all hover:text-default-700 hover:bg-default-100 rounded" href="javascript:;">
+                                                <i data-lucide="log-out" class="h-4 w-4 me-1.5"></i>
+                                                <span>Remove from Team</span>
+                                            </a>
+                                            <hr class="my-2 border-default-200">
+                                            <a class="flex items-center font-normal text-red-500 py-2 px-3 mx-1.5 transition-all hover:bg-red-500/10 rounded" href="javascript:;">
+                                                <i data-lucide="trash-2" class="h-4 w-4 me-1.5"></i>
+                                                <span>Delete</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center p-2.5">
+                                <img src="assets/img-4-e041de9f.jpg" class="h-12 rounded-full me-3" alt="shreyu">
+                                <div class="flex-grow">
+                                    <h5 class="mt-1 text-default-900">Nik G</h5>
+                                    <h6 class="text-default-600 font-normal mt-1">Inventory Manager</h6>
+                                </div>
+                                <div class="h-4">
+                                    <div class="hs-dropdown relative inline-flex [--placement:left-top] rtl:[--placement:bottom-left]">
+                                        <button type="button" class="hs-dropdown-toggle  rounded">
+                                            <i data-lucide="more-vertical" class="h-4 w-4"></i>
+                                        </button>
+
+                                        <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 min-w-[200px] transition-[opacity,margin] mt-4 opacity-0 z-10 bg-white shadow-lg rounded-lg border border-default-100 dark:bg-default-50 py-1.5 hidden">
+                                            <a class="flex items-center font-normal text-default-600 py-2 px-3 mx-1.5 transition-all hover:text-default-700 hover:bg-default-100 rounded" href="javascript:;">
+                                                <i data-lucide="pencil" class="h-4 w-4 me-1.5"></i>
+                                                <span>Edit</span>
+                                            </a>
+                                            <a class="flex items-center font-normal text-default-600 py-2 px-3 mx-1.5 transition-all hover:text-default-700 hover:bg-default-100 rounded" href="javascript:;">
+                                                <i data-lucide="log-out" class="h-4 w-4 me-1.5"></i>
+                                                <span>Remove from Team</span>
+                                            </a>
+                                            <hr class="my-2 border-default-200">
+                                            <a class="flex items-center font-normal text-red-500 py-2 px-3 mx-1.5 transition-all hover:bg-red-500/10 rounded" href="javascript:;">
+                                                <i data-lucide="trash-2" class="h-4 w-4 me-1.5"></i>
+                                                <span>Delete</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center p-2.5">
+                                <img src="assets/img-1-1e9aa300.jpg" class="h-12 rounded-full me-3" alt="shreyu">
+                                <div class="flex-grow">
+                                    <h5 class="mt-1 text-default-900">Hardik G</h5>
+                                    <h6 class="text-default-600 font-normal mt-1">Sales Person</h6>
+                                </div>
+                                <div class="h-4">
+                                    <div class="hs-dropdown relative inline-flex [--placement:left-top] rtl:[--placement:bottom-left]">
+                                        <button type="button" class="hs-dropdown-toggle  rounded">
+                                            <i data-lucide="more-vertical" class="h-4 w-4"></i>
+                                        </button>
+
+                                        <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 min-w-[200px] transition-[opacity,margin] mt-4 opacity-0 z-10 bg-white shadow-lg rounded-lg border border-default-100 dark:bg-default-50 py-1.5 hidden">
+                                            <a class="flex items-center font-normal text-default-600 py-2 px-3 mx-1.5 transition-all hover:text-default-700 hover:bg-default-100 rounded" href="javascript:;">
+                                                <i data-lucide="pencil" class="h-4 w-4 me-1.5"></i>
+                                                <span>Edit</span>
+                                            </a>
+                                            <a class="flex items-center font-normal text-default-600 py-2 px-3 mx-1.5 transition-all hover:text-default-700 hover:bg-default-100 rounded" href="javascript:;">
+                                                <i data-lucide="log-out" class="h-4 w-4 me-1.5"></i>
+                                                <span>Remove from Team</span>
+                                            </a>
+                                            <hr class="my-2 border-default-200">
+                                            <a class="flex items-center font-normal text-red-500 py-2 px-3 mx-1.5 transition-all hover:bg-red-500/10 rounded" href="javascript:;">
+                                                <i data-lucide="trash-2" class="h-4 w-4 me-1.5"></i>
+                                                <span>Delete</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center p-2.5">
+                                <img src="assets/img-8-c6ed7623.jpg" class="h-12 rounded-full me-3" alt="shreyu">
+                                <div class="flex-grow">
+                                    <h5 class="mt-1 text-default-900">GB Patel G</h5>
+                                    <h6 class="text-default-600 font-normal mt-1">Sales Person</h6>
+                                </div>
+                                <div class="h-4">
+                                    <div class="hs-dropdown relative inline-flex [--placement:left-top] rtl:[--placement:bottom-left]">
+                                        <button type="button" class="hs-dropdown-toggle  rounded">
+                                            <i data-lucide="more-vertical" class="h-4 w-4"></i>
+                                        </button>
+
+                                        <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 min-w-[200px] transition-[opacity,margin] mt-4 opacity-0 z-10 bg-white shadow-lg rounded-lg border border-default-100 dark:bg-default-50 py-1.5 hidden">
+                                            <a class="flex items-center font-normal text-default-600 py-2 px-3 mx-1.5 transition-all hover:text-default-700 hover:bg-default-100 rounded" href="javascript:;">
+                                                <i data-lucide="pencil" class="h-4 w-4 me-1.5"></i>
+                                                <span>Edit</span>
+                                            </a>
+                                            <a class="flex items-center font-normal text-default-600 py-2 px-3 mx-1.5 transition-all hover:text-default-700 hover:bg-default-100 rounded" href="javascript:;">
+                                                <i data-lucide="log-out" class="h-4 w-4 me-1.5"></i>
+                                                <span>Remove from Team</span>
+                                            </a>
+                                            <hr class="my-2 border-default-200">
+                                            <a class="flex items-center font-normal text-red-500 py-2 px-3 mx-1.5 transition-all hover:bg-red-500/10 rounded" href="javascript:;">
+                                                <i data-lucide="trash-2" class="h-4 w-4 me-1.5"></i>
+                                                <span>Delete</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center p-2.5">
+                                <img src="assets/img-2-a35f473e.jpg" class="h-12 rounded-full me-3" alt="shreyu">
+                                <div class="flex-grow">
+                                    <h5 class="mt-1 text-default-900">Jessica B</h5>
+                                    <h6 class="text-default-600 font-normal mt-1">Inventory Senior Manager</h6>
+                                </div>
+                                <div class="h-4">
+                                    <div class="hs-dropdown relative inline-flex [--placement:left-top] rtl:[--placement:bottom-left]">
+                                        <button type="button" class="hs-dropdown-toggle  rounded">
+                                            <i data-lucide="more-vertical" class="h-4 w-4"></i>
+                                        </button>
+
+                                        <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 min-w-[200px] transition-[opacity,margin] mt-4 opacity-0 z-10 bg-white shadow-lg rounded-lg border border-default-100 dark:bg-default-50 py-1.5 hidden">
+                                            <a class="flex items-center font-normal text-default-600 py-2 px-3 mx-1.5 transition-all hover:text-default-700 hover:bg-default-100 rounded" href="javascript:;">
+                                                <i data-lucide="pencil" class="h-4 w-4 me-1.5"></i>
+                                                <span>Edit</span>
+                                            </a>
+                                            <a class="flex items-center font-normal text-default-600 py-2 px-3 mx-1.5 transition-all hover:text-default-700 hover:bg-default-100 rounded" href="javascript:;">
+                                                <i data-lucide="log-out" class="h-4 w-4 me-1.5"></i>
+                                                <span>Remove from Team</span>
+                                            </a>
+                                            <hr class="my-2 border-default-200">
+                                            <a class="flex items-center font-normal text-red-500 py-2 px-3 mx-1.5 transition-all hover:bg-red-500/10 rounded" href="javascript:;">
+                                                <i data-lucide="trash-2" class="h-4 w-4 me-1.5"></i>
+                                                <span>Delete</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center p-2.5">
+                                <img src="assets/img-3-8c3c7453.jpg" class="h-12 rounded-full me-3" alt="shreyu">
+                                <div class="flex-grow">
+                                    <h5 class="mt-1 text-default-900">Tony S</h5>
+                                    <h6 class="text-default-600 font-normal mt-1">Sales Guy</h6>
+                                </div>
+                                <div class="h-4">
+                                    <div class="hs-dropdown relative inline-flex [--placement:left-top] rtl:[--placement:bottom-left]">
+                                        <button type="button" class="hs-dropdown-toggle  rounded">
+                                            <i data-lucide="more-vertical" class="h-4 w-4"></i>
+                                        </button>
+
+                                        <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 min-w-[200px] transition-[opacity,margin] mt-4 opacity-0 z-10 bg-white shadow-lg rounded-lg border border-default-100 dark:bg-default-50 py-1.5 hidden">
+                                            <a class="flex items-center font-normal text-default-600 py-2 px-3 mx-1.5 transition-all hover:text-default-700 hover:bg-default-100 rounded" href="javascript:;">
+                                                <i data-lucide="pencil" class="h-4 w-4 me-1.5"></i>
+                                                <span>Edit</span>
+                                            </a>
+                                            <a class="flex items-center font-normal text-default-600 py-2 px-3 mx-1.5 transition-all hover:text-default-700 hover:bg-default-100 rounded" href="javascript:;">
+                                                <i data-lucide="log-out" class="h-4 w-4 me-1.5"></i>
+                                                <span>Remove from Team</span>
+                                            </a>
+                                            <hr class="my-2 border-default-200">
+                                            <a class="flex items-center font-normal text-red-500 py-2 px-3 mx-1.5 transition-all hover:bg-red-500/10 rounded" href="javascript:;">
+                                                <i data-lucide="trash-2" class="h-4 w-4 me-1.5"></i>
+                                                <span>Delete</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1">
+                    <div class="bg-white rounded-md border border-default-200 dark:bg-default-50 overflow-hidden">
+                        <div class="px-4 py-3 flex justify-between items-center border-b border-default-200">
+                            <h4 class="uppercase dark:text-gray-300">Recent Orders</h4>
+                            <a href="javascript:void(0);" class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-primary text-white transition-all duration-300 hover:bg-primary-700">Export <i data-lucide="upload" class="h-4 w-4 ms-1.5"></i></a>
+                        </div>
+
+                        <div class="overflow-auto">
+                            <div class="min-w-full inline-block align-middle">
+                                <div class="overflow-hidden">
+                                    <table class="min-w-full divide-y divide-default-200">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" class="px-4 py-4 text-start text-sm font-semibold text-default-900">#</th>
+                                                <th scope="col" class="px-4 py-4 text-start text-sm font-semibold text-default-900">Product</th>
+                                                <th scope="col" class="px-4 py-4 text-start text-sm font-semibold text-default-900">Customer</th>
+                                                <th scope="col" class="px-4 py-4 text-start text-sm font-semibold text-default-900">Price</th>
+                                                <th scope="col" class="px-4 py-4 text-start text-sm font-semibold text-default-900">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="divide-y divide-default-200">
+                                            <tr class="hover:bg-default-100">
+                                                <td class="px-4 py-4 whitespace-nowrap text-sm font-medium text-default-600">#98754</td>
+                                                <td class="px-4 py-4 whitespace-nowrap text-sm text-default-600">ASOS Ridley High</td>
+                                                <td class="px-4 py-4 whitespace-nowrap text-sm text-default-600">Otto B</td>
+                                                <td class="px-4 py-4 whitespace-nowrap text-start text-default-600">$79.49</td>
+                                                <td class="px-4 py-4 whitespace-nowrap text-start text-default-600"><span class="inline-flex items-center gap-1.5 py-0.5 px-1.5 rounded text-xs font-medium bg-yellow-500/10 text-yellow-500">Pending</span></td>
+                                            </tr>
+
+                                            <tr class="hover:bg-default-100">
+                                                <td class="px-4 py-4 whitespace-nowrap text-sm font-medium text-default-600">#98753</td>
+                                                <td class="px-4 py-4 whitespace-nowrap text-sm text-default-600">Marco Lightweight Shirt</td>
+                                                <td class="px-4 py-4 whitespace-nowrap text-sm text-default-600">Mark P</td>
+                                                <td class="px-4 py-4 whitespace-nowrap text-start text-default-600">$125.49</td>
+                                                <td class="px-4 py-4 whitespace-nowrap text-start text-default-600"><span class="inline-flex items-center gap-1.5 py-0.5 px-1.5 rounded text-xs font-medium bg-teal-500/10 text-teal-500">Delivered</span></td>
+                                            </tr>
+
+                                            <tr class="hover:bg-default-100">
+                                                <td class="px-4 py-4 whitespace-nowrap text-sm font-medium text-default-600">#98752</td>
+                                                <td class="px-4 py-4 whitespace-nowrap text-sm text-default-600">Half Sleeve Shirt</td>
+                                                <td class="px-4 py-4 whitespace-nowrap text-sm text-default-600">Dave B</td>
+                                                <td class="px-4 py-4 whitespace-nowrap text-start text-default-600">$35.49</td>
+                                                <td class="px-4 py-4 whitespace-nowrap text-start text-default-600"><span class="inline-flex items-center gap-1.5 py-0.5 px-1.5 rounded text-xs font-medium bg-red-500/10 text-red-500">Declined</span></td>
+                                            </tr>
+
+                                            <tr class="hover:bg-default-100">
+                                                <td class="px-4 py-4 whitespace-nowrap text-sm font-medium text-default-600">#98751</td>
+                                                <td class="px-4 py-4 whitespace-nowrap text-sm text-default-600">Lightweight Jacket</td>
+                                                <td class="px-4 py-4 whitespace-nowrap text-sm text-default-600">Shreyu N</td>
+                                                <td class="px-4 py-4 whitespace-nowrap text-start text-default-600">$49.49</td>
+                                                <td class="px-4 py-4 whitespace-nowrap text-start text-default-600"><span class="inline-flex items-center gap-1.5 py-0.5 px-1.5 rounded text-xs font-medium bg-teal-500/10 text-teal-500">Declined</span></td>
+                                            </tr>
+
+                                            <tr class="hover:bg-default-100">
+                                                <td class="px-4 py-4 whitespace-nowrap text-sm font-medium text-default-600">#98750</td>
+                                                <td class="px-4 py-4 whitespace-nowrap text-sm text-default-600">Marco Shoes</td>
+                                                <td class="px-4 py-4 whitespace-nowrap text-sm text-default-600">Rik N</td>
+                                                <td class="px-4 py-4 whitespace-nowrap text-start text-default-600">$69.49</td>
+                                                <td class="px-4 py-4 whitespace-nowrap text-start text-default-600"><span class="inline-flex items-center gap-1.5 py-0.5 px-1.5 rounded text-xs font-medium bg-red-500/10 text-red-500">Declined</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div><!-- end table-responsive-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-4 border-t border-default-200 w-full bg-white dark:bg-default-50">
+        <div class="container">
+            <div class="grid lg:grid-cols-2 items-center gap-6">
+                <p class="text-default-600 lg:text-start text-center">
+                    <script>document.write(new Date().getFullYear())</script> Design & Crafted With ❤️ by Coderthemes
+                </p>
+    
+                <div class="lg:flex hidden lg:justify-end text-center justify-center gap-6">
+                    <a href="javascript:void(0)" class="text-default-500 font-medium">
+                        Terms
+                    </a>
+                    <a href="javascript:void(0)" class="text-default-500 font-medium">
+                        Privacy
+                    </a>
+                    <a href="javascript:void(0)" class="text-default-500 font-medium">
+                        Cookies
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="fixed bottom-5 end-5 flex flex-col gap-1 items-center z-[1000]">
+        <!-- Back to Top -->
+        <button class="h-10 w-10 bg-primary/20 backdrop-blur-3xl rounded-full text-primary flex justify-center items-center transition-all duration-500 translate-x-16 shadow-[inset_0px_0px_12px_0px] shadow-primary/40 z-10 " data-toggle="back-to-top">
+            <i class="h-4 w-4" data-lucide="chevron-up"></i>
+        </button>
+        
+        <!-- Light/Dark Toggle -->
+        <button class="bg-primary text-white rounded-lg z-20">
+            <span class="h-9 w-9 flex justify-center items-center"  id="light-theme">
+                <i class="h-5 w-5" data-lucide="moon"></i>
+            </span>
+            <span class="h-9 w-9 flex justify-center items-center" id="dark-theme">
+                <i class="h-5 w-5" data-lucide="sun"></i>
+            </span>
+        </button>
+    </div>
+    
+
+    
+    
+    
+</body>
+
+
+<!-- Mirrored from coderthemes.com/aeropage/admin-dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 Aug 2025 02:57:53 GMT -->
+</html>

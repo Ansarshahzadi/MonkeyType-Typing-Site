@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Monkeytype Style Typing Test</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body style="background: #fff; color: #222; font-family: monospace">
+    <!-- Top bar -->
+    <div
+      class="d-flex justify-content-center align-items-center gap-3 border-bottom"
+      style="background: #f1f1f1; padding: 10px; font-size: 14px"
+    >
+      <span id="punctuation" style="cursor: pointer; color: #666"
+        >@ punctuation</span
+      >
+      <span id="numbers" style="cursor: pointer; color: #666"># numbers</span>
+      <span id="words" style="cursor: pointer; color: #666">A words</span>
+      <span id="quote" style="cursor: pointer; color: #666">" quote</span>
+      <span id="zen" style="cursor: pointer; color: #666">△ zen</span>
+      <span id="custom" style="cursor: pointer; color: #666">✎ custom</span>
+      <span id="btn15" style="cursor: pointer; color: #666">15</span>
+      <span id="btn30" style="cursor: pointer; color: #666">30</span>
+      <span
+        id="btn60"
+        style="cursor: pointer; color: #d35400; font-weight: bold"
+        >60</span
+      >
+      <span id="btn120" style="cursor: pointer; color: #666">120</span>
+      <span id="gear" style="cursor: pointer; color: #666">⚙</span>
+    </div>
+
+    <!-- Timer -->
+    <div class="text-center mt-3">
+      ⏳ Time Left: <span id="timer">0</span> sec
+    </div>
+
+    <!-- Typing Area -->
+    <div
+      class="d-flex justify-content-center align-items-center"
+      style="height: calc(100vh - 120px); text-align: center"
+    >
+      <div
+        id="textDisplay"
+        style="
+          font-size: 24px;
+          line-height: 2rem;
+          max-width: 1050px;
+          color: #333;
+          margin: 0 auto;
+          text-align: justify;
+        "
+      ></div>
+    </div>
+
+    <!-- Custom Paragraph Box -->
+    <div
+      id="customParagraphBox"
+      style="display: none; margin-top: 15px; text-align: center"
+    >
+      <textarea
+        id="customParagraph"
+        rows="10"
+        placeholder="Type or paste your custom paragraph here..."
+        style="
+          background: #fafafa;
+          border: 1px solid #ccc;
+          color: #000;
+          padding: 5px;
+          font-family: monospace;
+          width: 80%;
+        "
+      ></textarea
+      ><br />
+      <button class="btn btn-sm btn-warning mt-2" id="setParagraph">
+        Set Paragraph
+      </button>
+    </div>
+
+    <!-- Modal for Custom Time -->
+    <div class="modal fade" id="timeModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content" style="border-radius: 10px">
+          <div class="modal-header">
+            <h5 class="modal-title">Set Custom Time</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <input
+              type="number"
+              id="customTimeInput"
+              class="form-control"
+              placeholder="Enter seconds"
+            />
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" data-bs-dismiss="modal">
+              Close
+            </button>
+            <button class="btn btn-warning" id="setCustomTime">Set Time</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      let timerDisplay = document.getElementById("timer");
+      let interval,
+        timeLeft = 0,
+        started = false;
+      let currentText = "";
+      let currentIndex = 0,
+        correct = 0,
+        incorrect = 0;
+
+      const textDisplay = document.getElementById("textDisplay");
+
+      // Multiple random paragraphs (each ~600-800 characters, 3-4 per option)
+      const texts = {
+        words: [
+          "Typing words repeatedly trains the mind and fingers together. When learners sit for hours pressing keys in a rhythmic flow, they discover that accuracy improves automatically. Instead of looking at the keyboard, they begin to trust muscle memory. Every repeated effort builds confidence, and confidence creates momentum. Slowly, words no longer appear as random shapes, but rather as clear patterns that the brain anticipates. This is the true beauty of typing practice, where effort and patience merge into skill, and progress feels natural rather than forced.",
+          "Words flow like streams when typing becomes second nature. At first, mistakes are common and progress feels painfully slow. Yet, with dedication, the simple act of pressing letters transforms into fluent expression. Writers notice how quickly thoughts travel from mind to screen. It becomes effortless to keep pace with ideas without losing track of them. A beginner may stumble, but with each line written, confidence grows stronger. The journey from hesitation to fluency is long, but every keystroke carries the learner closer to mastery and precision.",
+          "Every typist begins by learning basic words, repeating them until they stick like a rhythm. Accuracy at first seems more important than speed, and that is true. But over time, the brain adapts, the fingers glide across keys, and speed follows naturally. In this process, patience is the greatest teacher. When fingers stumble, it is not failure but progress, a reminder that practice is shaping skill. A day of typing builds upon the last, and soon entire passages flow without hesitation. Words become a bridge between thought and expression.",
+        ],
+        punctuation: [
+          "Punctuation gives clarity to language. Without commas, sentences run endlessly, exhausting the reader. A full stop provides relief, while a question mark sparks curiosity. Exclamation points add excitement, and colons invite explanation. Imagine reading a text without these marks—confusion would rule. The rhythm of language comes alive with punctuation, guiding pauses and tone. For learners, mastering punctuation is not just about grammar rules; it is about making meaning clear, about shaping words into precise communication that resonates with every reader.",
+          "Marks such as commas, dashes, and colons are not mere decorations. They are the signals of language, directing how a reader should interpret thought. A missing comma may change meaning completely, while an added pause can create beauty in rhythm. Writers learn that punctuation is not optional—it is essential. When used well, it elevates plain writing into graceful expression. The way a semicolon joins ideas, or the way quotation marks frame dialogue, adds layers of understanding. Punctuation ensures words are not just written, but heard clearly.",
+          "To write without punctuation is like playing music without rests. The melody continues endlessly, but loses harmony. Periods, commas, and dashes create pauses that allow readers to breathe. They organize ideas into manageable thoughts. For example, a single misplaced comma can change sense entirely, from humor to confusion. That is why punctuation is a responsibility as much as an art. Every writer who seeks clarity must respect its power. It teaches not only correctness, but also elegance, turning ordinary lines into well-crafted expressions of meaning.",
+        ],
+        numbers: [
+          "Numbers are the foundation of order. They allow us to measure, count, and compare. From simple digits like one, two, and three, to larger calculations involving thousands, every number has meaning. Typists who practice numbers develop precision, since even a single error can change an entire outcome. For example, typing 123 instead of 132 may seem small, but in mathematics or finance, it makes all the difference. Numbers train discipline, and discipline builds accuracy. They remind us that detail matters more than speed when accuracy is critical.",
+          "In everyday life, numbers surround us. The year we live in, the time we keep, the prices we pay, all depend on digits. Typing them with focus sharpens attention. Unlike words, numbers leave no room for guessing. They must be exact. A misplaced zero multiplies error, while a forgotten digit distorts truth. This is why typists often dedicate extra sessions to practice numbers. They know that mastering these symbols builds reliability. Over time, typing long sequences of numbers feels as natural as typing common words.",
+          "Every calculation depends on numbers typed correctly. A single slip may alter results drastically. Consider a scientist entering data or an accountant recording figures—accuracy is not optional, it is essential. Practicing number sequences in typing exercises strengthens not only speed but also concentration. The brain learns to focus on detail, resisting distraction. Numbers demand order, and through repetition, they teach discipline. The more one practices, the easier it becomes to type long numeric strings without hesitation, with both precision and speed.",
+        ],
+        quote: [
+          "“Success is not final, failure is not fatal: it is the courage to continue that counts.” These words remind us that perseverance matters more than temporary results. A person may fail many times, but failure is never the end unless they stop trying. Likewise, success achieved once does not guarantee permanent victory. The lesson in this quote is that life is an ongoing journey, shaped by effort and resilience. True strength lies not in perfection, but in persistence, in standing up after every fall with renewed determination.",
+          "“In the middle of every difficulty lies opportunity.” This quote highlights that challenges are not dead ends but pathways to growth. When life feels overwhelming, it is easy to surrender, yet hidden within problems are lessons and chances to improve. Struggles teach resilience, sharpen focus, and shape character. By facing difficulties instead of avoiding them, people unlock potential they never knew existed. Every obstacle carries a hidden benefit, a chance to rise stronger. Those who keep moving forward discover that hardship builds greatness.",
+          "“The future belongs to those who prepare for it today.” Planning is the foundation of success. This quote emphasizes that dreams are achieved not by waiting, but by working every day with dedication. A student who studies consistently secures knowledge for tomorrow. An individual who saves wisely prepares for opportunities ahead. The future does not arrive by chance; it is built by present effort. Every moment invested now lays bricks for the path forward, ensuring that tomorrow rewards the persistence shown today.",
+        ],
+        zen: [
+          "Zen typing encourages peace of mind during practice. Instead of rushing for speed, the learner focuses on breathing steadily, pressing each key calmly. The screen becomes a mirror of the mind: when thoughts are scattered, mistakes increase; when thoughts are clear, typing flows like water. Zen is about presence, about giving attention to each moment. Typing with such mindfulness turns practice into meditation. It is no longer just about letters, but about finding rhythm and balance within. Peace leads naturally to fluency.",
+          "To type with a Zen mindset is to release pressure and focus only on the now. The hands move slowly, yet steadily, guided by calm thought rather than urgency. Errors lose power because they are not failures, only lessons. The process itself becomes the goal. Breathing deep, sitting still, letting fingers dance lightly on the keyboard—this transforms typing into a gentle art. Zen typing reminds us that progress is not always about speed. It is about clarity, focus, and harmony between body and mind.",
+          "Zen is simplicity, and typing with Zen means removing distractions. Instead of worrying about mistakes or results, the learner pays attention to each stroke. The act of typing itself becomes meaningful. Every key pressed with care builds discipline and calmness. It is meditation through motion. In this state, speed may still come, but it does not matter. What matters is peace, presence, and steady growth. Zen typing is not about racing toward results, but about enjoying the journey with patience and awareness.",
+        ],
+      };
+
+      function loadText(type) {
+        const options = texts[type];
+        const randomIndex = Math.floor(Math.random() * options.length);
+        currentText = options[randomIndex];
+        renderText();
+        currentIndex = 0;
+        correct = 0;
+        incorrect = 0;
+      }
+
+      function renderText() {
+        textDisplay.innerHTML = "";
+        currentText.split("").forEach((ch) => {
+          let span = document.createElement("span");
+          span.innerText = ch;
+          textDisplay.appendChild(span);
+        });
+      }
+
+      function startTimer(seconds) {
+        clearInterval(interval);
+        timeLeft = seconds;
+        timerDisplay.textContent = timeLeft;
+        started = true;
+        interval = setInterval(() => {
+          timeLeft--;
+          timerDisplay.textContent = timeLeft;
+          if (timeLeft <= 0) {
+            clearInterval(interval);
+            finishTest();
+          }
+        }, 1000);
+      }
+
+      function finishTest() {
+        started = false;
+        const totalTyped = correct + incorrect;
+        const accuracy =
+          totalTyped > 0 ? Math.round((correct / totalTyped) * 100) : 0;
+        const wpm = Math.round(
+          correct / 5 / ((parseInt(timerDisplay.textContent) || 1) / 60)
+        );
+
+        const result = {
+          wpm,
+          accuracy,
+          correct,
+          incorrect,
+          totalTyped,
+          time: timerDisplay.innerText,
+        };
+
+        localStorage.setItem("typingResult", JSON.stringify(result));
+        window.location.href = "result.html";
+      }
+
+      // Typing handling
+      document.addEventListener("keydown", (e) => {
+        if (!started) return;
+        const spans = textDisplay.querySelectorAll("span");
+        if (currentIndex < spans.length && e.key.length === 1) {
+          const expected = spans[currentIndex].innerText;
+          if (e.key === expected) {
+            spans[currentIndex].style.color = "lightgrey";
+            correct++;
+          } else {
+            spans[currentIndex].style.color = "red";
+            incorrect++;
+          }
+          currentIndex++;
+        } else if (e.key === "Backspace" && currentIndex > 0) {
+          currentIndex--;
+          spans[currentIndex].style.color = "#333";
+        }
+      });
+
+      // Default text
+      loadText("words");
+
+      // Buttons
+      document.getElementById("punctuation").onclick = () =>
+        loadText("punctuation");
+      document.getElementById("numbers").onclick = () => loadText("numbers");
+      document.getElementById("words").onclick = () => loadText("words");
+      document.getElementById("quote").onclick = () => loadText("quote");
+      document.getElementById("zen").onclick = () => loadText("zen");
+
+      document.getElementById("btn15").onclick = () => startTimer(15);
+      document.getElementById("btn30").onclick = () => startTimer(30);
+      document.getElementById("btn60").onclick = () => startTimer(60);
+      document.getElementById("btn120").onclick = () => startTimer(120);
+
+      // Gear icon for modal
+      document.getElementById("gear").onclick = () => {
+        let modal = new bootstrap.Modal(document.getElementById("timeModal"));
+        modal.show();
+      };
+
+      document.getElementById("setCustomTime").onclick = () => {
+        let sec = parseInt(document.getElementById("customTimeInput").value);
+        if (sec > 0) {
+          startTimer(sec);
+          bootstrap.Modal.getInstance(
+            document.getElementById("timeModal")
+          ).hide();
+        }
+      };
+
+      // Custom paragraph
+      document.getElementById("custom").onclick = () => {
+        document.getElementById("customParagraphBox").style.display = "block";
+        textDisplay.innerText = "";
+      };
+      document.getElementById("setParagraph").onclick = () => {
+        let para = document.getElementById("customParagraph").value.trim();
+        if (para.length > 0) {
+          currentText = para;
+          renderText();
+          currentIndex = 0;
+          correct = 0;
+          incorrect = 0;
+          document.getElementById("customParagraphBox").style.display = "none";
+        }
+      };
+    </script>
+  </body>
+</html>

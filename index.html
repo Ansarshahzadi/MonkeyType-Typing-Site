@@ -167,9 +167,10 @@
 
         const totalTyped = correct + incorrect;
         const accuracy = totalTyped > 0 ? Math.round((correct / totalTyped) * 100) : 0;
-        const wpm = Math.round(correct / 5 / ((totalTimeSelected - timeLeft || 1) / 60));
 
-        // Collect character-wise stats
+        // ✅ WPM includes correct + incorrect
+        const wpm = Math.round(totalTyped / 5 / ((totalTimeSelected - timeLeft || 1) / 60));
+
         const spans = textDisplay.querySelectorAll("span");
         let charStats = {}; 
         spans.forEach((span) => {
@@ -190,12 +191,13 @@
         window.location.href = "result.html";
       }
 
-      // Typing logic
+      // ✅ Typing logic (auto next paragraph + WPM fix)
       document.addEventListener("keydown", (e) => {
         if (timeLeft > 0 && !started) startCountdown();
         if (!started) return;
 
         const spans = textDisplay.querySelectorAll("span");
+
         if (currentIndex < spans.length && e.key.length === 1) {
           const expected = spans[currentIndex].innerText;
           if (e.key === expected) {
@@ -206,37 +208,36 @@
             incorrect++;
           }
           currentIndex++;
+
+          // ✅ Load next paragraph when one is finished
+          if (currentIndex === spans.length) {
+            let activeType = document.querySelector(".topbar span.active").id;
+            if (activeType !== "zen") {
+              loadText(activeType);
+            }
+          }
+
         } else if (e.key === "Backspace" && currentIndex > 0) {
           currentIndex--;
           spans[currentIndex].style.color = "#333";
         }
       });
 
-      // Button bindings with FIX
+      // Button bindings
       document.getElementById("words").onclick = (e) => { 
-        setActive(e.target); 
-        customBox.style.display = "none";   // hide zen box
-        loadText("words"); 
+        setActive(e.target); customBox.style.display = "none"; loadText("words"); 
       };
       document.getElementById("punctuation").onclick = (e) => { 
-        setActive(e.target); 
-        customBox.style.display = "none";   // hide zen box
-        loadText("punctuation"); 
+        setActive(e.target); customBox.style.display = "none"; loadText("punctuation"); 
       };
       document.getElementById("numbers").onclick = (e) => { 
-        setActive(e.target); 
-        customBox.style.display = "none";   // hide zen box
-        loadText("numbers"); 
+        setActive(e.target); customBox.style.display = "none"; loadText("numbers"); 
       };
       document.getElementById("quote").onclick = (e) => { 
-        setActive(e.target); 
-        customBox.style.display = "none";   // hide zen box
-        loadText("quote"); 
+        setActive(e.target); customBox.style.display = "none"; loadText("quote"); 
       };
       document.getElementById("zen").onclick = (e) => { 
-        setActive(e.target); 
-        textDisplay.innerHTML = ""; 
-        customBox.style.display = "block";  // show only in zen
+        setActive(e.target); textDisplay.innerHTML = ""; customBox.style.display = "block"; 
       };
 
       // Timer buttons

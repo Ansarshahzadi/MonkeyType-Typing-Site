@@ -37,11 +37,9 @@
       class="d-flex justify-content-center align-items-center mx-auto gap-3 border-bottom w-50 topbar"
       style="background: #f1f1f1; padding: 10px; font-size: 14px"
     >
-      <span id="punctuation" style="cursor: pointer; color: #666"
-        >@ punctuation</span
-      >
+      <span id="words" class="active" style="cursor: pointer; color: #666">A words</span>
+      <span id="punctuation" style="cursor: pointer; color: #666">@ punctuation</span>
       <span id="numbers" style="cursor: pointer; color: #666"># numbers</span>
-      <span id="words" style="cursor: pointer; color: #666">A words</span>
       <span id="quote" style="cursor: pointer; color: #666">" quote</span>
       <span id="zen" style="cursor: pointer; color: #666">△ zen</span>
       <span id="btn15" style="cursor: pointer; color: #666">15</span>
@@ -57,73 +55,37 @@
     </div>
 
     <!-- Typing Area -->
-    <div
-      class="d-flex justify-content-center align-items-center"
-      style="height: calc(80vh - 120px); text-align: center"
-    >
+    <div class="d-flex justify-content-center align-items-center"
+      style="height: calc(80vh - 120px); text-align: center">
       <div
         id="textDisplay"
-        style="
-          font-size: 24px;
-          line-height: 2rem;
-          padding: 25px;
-          max-width: 1050px;
-          color: #333;
-          margin: 0 auto;
-          text-align: justify;
-        "
-      ></div>
+        style="font-size: 24px; line-height: 2rem; padding: 25px;
+               max-width: 1050px; color: #333; margin: 0 auto; text-align: justify;">
+      </div>
     </div>
 
     <!-- Custom Paragraph Box -->
-    <div
-      id="customParagraphBox"
-      style="
-        display: none;
-        margin: 0px auto 0;
-        text-align: center;
-        max-width: 80%;
-      "
-    >
-      <textarea
-        id="customParagraph"
-        rows="6"
+    <div id="customParagraphBox"
+      style="display: none; margin: 0 auto; text-align: center; max-width: 80%;">
+      <textarea id="customParagraph" rows="6"
         placeholder="Type or paste your custom paragraph here..."
-        style="
-          background: #fafafa;
-          border: 1px solid #ccc;
-          color: #000;
-          padding: 5px;
-          font-family: monospace;
-          width: 100%;
-        "
-      ></textarea
-      ><br />
-      <button class="btn btn-sm btn-warning mt-2" id="setParagraph">
-        Set Paragraph
-      </button>
+        style="background: #fafafa; border: 1px solid #ccc; color: #000;
+               padding: 5px; font-family: monospace; width: 100%;"></textarea><br />
+      <button class="btn btn-sm btn-warning mt-2" id="setParagraph">Set Paragraph</button>
     </div>
 
     <!-- Modal for Custom Time -->
     <div class="modal fade" id="timeModal" tabindex="-1">
       <div class="modal-dialog">
-        <div class="modal-content" style="border-radius: 10px">
+        <div class="modal-content rounded-3">
           <div class="modal-header">
             <h5 class="modal-title">Set Custom Time</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-            ></button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
           </div>
           <div class="modal-body">
             <div class="input-group">
-              <input
-                type="number"
-                id="customTimeInput"
-                class="form-control"
-                placeholder="Enter time"
-              />
+              <input type="number" id="customTimeInput" class="form-control"
+                placeholder="Enter time" />
               <select id="timeUnit" class="form-select">
                 <option value="sec">Seconds</option>
                 <option value="min">Minutes</option>
@@ -132,9 +94,7 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button class="btn btn-secondary" data-bs-dismiss="modal">
-              Close
-            </button>
+            <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             <button class="btn btn-warning" id="setCustomTime">Set Time</button>
           </div>
         </div>
@@ -142,13 +102,150 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    // result.html ke andar let result =
-    JSON.parse(localStorage.getItem("typingResult")); if (result) {
-    document.getElementById("wpm").innerText = result.wpm;
-    document.getElementById("accuracy").innerText = result.accuracy + "%";
-    document.getElementById("errors").innerText = result.incorrect; // ✅ Proper
-    format time let m = Math.floor(result.time / 60); let s = result.time % 60;
-    document.getElementById("time").innerText =
-    `${m}:${s.toString().padStart(2,"0")}`; }
+    <script>
+      const timerDisplay = document.getElementById("timer");
+      const textDisplay = document.getElementById("textDisplay");
+      const topbarBtns = document.querySelectorAll(".topbar span");
+
+      let interval, timeLeft = 0, started = false;
+      let currentText = "", currentIndex = 0, correct = 0, incorrect = 0;
+      let totalTimeSelected = 60; // default
+
+      function setActive(el) {
+        topbarBtns.forEach((btn) => btn.classList.remove("active"));
+        el.classList.add("active");
+      }
+
+      function formatTime(seconds) {
+        let m = Math.floor(seconds / 60);
+        let s = seconds % 60;
+        return `${m}:${s.toString().padStart(2, "0")}`;
+      }
+
+      async function loadText(type) {
+        try {
+          const response = await fetch("english.json");
+          const data = await response.json();
+          const options = data[type];
+          if (!options || options.length === 0) return;
+          const randomIndex = Math.floor(Math.random() * options.length);
+          currentText = options[randomIndex];
+          currentIndex = 0;
+          correct = 0;
+          incorrect = 0;
+          renderText();
+        } catch (err) {
+          console.error("Error loading JSON:", err);
+        }
+      }
+
+      function renderText() {
+        textDisplay.innerHTML = "";
+        currentText.split("").forEach((ch) => {
+          let span = document.createElement("span");
+          span.innerText = ch;
+          textDisplay.appendChild(span);
+        });
+      }
+
+      function startCountdown() {
+        started = true;
+        interval = setInterval(() => {
+          timeLeft--;
+          timerDisplay.textContent = formatTime(timeLeft);
+          if (timeLeft <= 0) {
+            clearInterval(interval);
+            finishTest();
+          }
+        }, 1000);
+      }
+
+      function finishTest() {
+        started = false;
+        clearInterval(interval);
+
+        const totalTyped = correct + incorrect;
+        const accuracy = totalTyped > 0 ? Math.round((correct / totalTyped) * 100) : 0;
+        const wpm = Math.round(correct / 5 / ((totalTimeSelected - timeLeft || 1) / 60));
+
+        // Collect character-wise stats
+        const spans = textDisplay.querySelectorAll("span");
+        let charStats = {}; 
+        spans.forEach((span) => {
+          const char = span.innerText;
+          if (!charStats[char]) {
+            charStats[char] = { total: 0, errors: 0 };
+          }
+          charStats[char].total++;
+          if (span.style.color === "red") {
+            charStats[char].errors++;
+          }
+        });
+
+        const result = { wpm, accuracy, correct, incorrect,
+                         totalTyped, time: totalTimeSelected, charStats };
+
+        localStorage.setItem("typingResult", JSON.stringify(result));
+        window.location.href = "result.html";
+      }
+
+      // Typing logic
+      document.addEventListener("keydown", (e) => {
+        if (timeLeft > 0 && !started) startCountdown();
+        if (!started) return;
+
+        const spans = textDisplay.querySelectorAll("span");
+        if (currentIndex < spans.length && e.key.length === 1) {
+          const expected = spans[currentIndex].innerText;
+          if (e.key === expected) {
+            spans[currentIndex].style.color = "lightgrey";
+            correct++;
+          } else {
+            spans[currentIndex].style.color = "red";
+            incorrect++;
+          }
+          currentIndex++;
+        } else if (e.key === "Backspace" && currentIndex > 0) {
+          currentIndex--;
+          spans[currentIndex].style.color = "#333";
+        }
+      });
+
+      // Button bindings
+      document.getElementById("words").onclick = (e) => { setActive(e.target); loadText("words"); };
+      document.getElementById("punctuation").onclick = (e) => { setActive(e.target); loadText("punctuation"); };
+      document.getElementById("numbers").onclick = (e) => { setActive(e.target); loadText("numbers"); };
+      document.getElementById("quote").onclick = (e) => { setActive(e.target); loadText("quote"); };
+      document.getElementById("zen").onclick = (e) => { setActive(e.target); textDisplay.innerHTML = ""; document.getElementById("customParagraphBox").style.display = "block"; };
+
+      // Timer buttons
+      function setTimer(sec, el) {
+        setActive(el);
+        timeLeft = sec;
+        totalTimeSelected = sec;
+        timerDisplay.textContent = formatTime(timeLeft);
+      }
+      document.getElementById("btn15").onclick = (e) => setTimer(15, e.target);
+      document.getElementById("btn30").onclick = (e) => setTimer(30, e.target);
+      document.getElementById("btn60").onclick = (e) => setTimer(60, e.target);
+      document.getElementById("btn120").onclick = (e) => setTimer(120, e.target);
+
+      // Custom time modal
+      document.getElementById("gear").onclick = () => new bootstrap.Modal(document.getElementById("timeModal")).show();
+      document.getElementById("setCustomTime").onclick = () => {
+        let value = parseInt(document.getElementById("customTimeInput").value);
+        let unit = document.getElementById("timeUnit").value;
+        if (value > 0) {
+          if (unit === "min") value *= 60;
+          else if (unit === "hr") value *= 3600;
+          timeLeft = value;
+          totalTimeSelected = value;
+          timerDisplay.textContent = formatTime(timeLeft);
+          bootstrap.Modal.getInstance(document.getElementById("timeModal")).hide();
+        }
+      };
+
+      loadText("words"); // default
+    </script>
   </body>
 </html>

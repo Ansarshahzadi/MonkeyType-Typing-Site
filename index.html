@@ -106,6 +106,7 @@
       const timerDisplay = document.getElementById("timer");
       const textDisplay = document.getElementById("textDisplay");
       const topbarBtns = document.querySelectorAll(".topbar span");
+      const customBox = document.getElementById("customParagraphBox");
 
       let interval, timeLeft = 0, started = false;
       let currentText = "", currentIndex = 0, correct = 0, incorrect = 0;
@@ -211,12 +212,32 @@
         }
       });
 
-      // Button bindings
-      document.getElementById("words").onclick = (e) => { setActive(e.target); loadText("words"); };
-      document.getElementById("punctuation").onclick = (e) => { setActive(e.target); loadText("punctuation"); };
-      document.getElementById("numbers").onclick = (e) => { setActive(e.target); loadText("numbers"); };
-      document.getElementById("quote").onclick = (e) => { setActive(e.target); loadText("quote"); };
-      document.getElementById("zen").onclick = (e) => { setActive(e.target); textDisplay.innerHTML = ""; document.getElementById("customParagraphBox").style.display = "block"; };
+      // Button bindings with FIX
+      document.getElementById("words").onclick = (e) => { 
+        setActive(e.target); 
+        customBox.style.display = "none";   // hide zen box
+        loadText("words"); 
+      };
+      document.getElementById("punctuation").onclick = (e) => { 
+        setActive(e.target); 
+        customBox.style.display = "none";   // hide zen box
+        loadText("punctuation"); 
+      };
+      document.getElementById("numbers").onclick = (e) => { 
+        setActive(e.target); 
+        customBox.style.display = "none";   // hide zen box
+        loadText("numbers"); 
+      };
+      document.getElementById("quote").onclick = (e) => { 
+        setActive(e.target); 
+        customBox.style.display = "none";   // hide zen box
+        loadText("quote"); 
+      };
+      document.getElementById("zen").onclick = (e) => { 
+        setActive(e.target); 
+        textDisplay.innerHTML = ""; 
+        customBox.style.display = "block";  // show only in zen
+      };
 
       // Timer buttons
       function setTimer(sec, el) {

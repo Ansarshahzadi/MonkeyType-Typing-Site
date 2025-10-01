@@ -19,7 +19,7 @@
     <div class="min-vh-100 d-flex align-items-center justify-content-center">
       <div class="container">
         <div class="row justify-content-center">
-          <div class="col-lg-6 col-md-8">
+          <div class="col-lg-5 col-md-7">
             <div class="card shadow-lg border-0 rounded-3">
               <div class="card-body p-4">
                 <!-- Logo -->
@@ -100,60 +100,6 @@
                     </button>
                   </div>
                 </form>
-
-                <!-- Divider -->
-                <div class="d-flex align-items-center my-4">
-                  <hr class="flex-grow-1" />
-                  <span class="px-2 text-muted">Or</span>
-                  <hr class="flex-grow-1" />
-                </div>
-
-                <!-- Social -->
-                <div class="text-center mb-3">
-                  <p class="fw-bold">Sign in with</p>
-                  <div class="d-flex justify-content-center gap-2 mb-3">
-                    <a
-                      href="#"
-                      class="btn text-white rounded-circle d-flex align-items-center justify-content-center"
-                      style="
-                        width: 48px;
-                        height: 48px;
-                        background-color: rgb(234 88 12);
-                      "
-                      ><i class="bi bi-facebook"></i
-                    ></a>
-                    <a
-                      href="#"
-                      class="btn text-white rounded-circle d-flex align-items-center justify-content-center"
-                      style="
-                        width: 48px;
-                        height: 48px;
-                        background-color: rgb(234 88 12);
-                      "
-                      ><i class="bi bi-instagram"></i
-                    ></a>
-                    <a
-                      href="#"
-                      class="btn text-white rounded-circle d-flex align-items-center justify-content-center"
-                      style="
-                        width: 48px;
-                        height: 48px;
-                        background-color: rgb(234 88 12);
-                      "
-                      ><i class="bi bi-twitter"></i
-                    ></a>
-                    <a
-                      href="#"
-                      class="btn text-white rounded-circle d-flex align-items-center justify-content-center"
-                      style="
-                        width: 48px;
-                        height: 48px;
-                        background-color: rgb(234 88 12);
-                      "
-                      ><i class="bi bi-linkedin"></i
-                    ></a>
-                  </div>
-                </div>
 
                 <!-- Footer -->
                 <p class="text-center">

@@ -1,7 +1,10 @@
 <?php
 session_start();
-if(!isset($_SESSION['user_id'])) header("Location: login.php");
-$role = $_SESSION['role'] ?? 'user';
+$loggedIn = isset($_SESSION['user_id']);
+$role = $_SESSION['role'] ?? 'guest';
+
+// Agar login ke baad save=1 ho to JS se auto save trigger hoga
+$autoSave = isset($_GET['save']) ? true : false;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,6 +22,7 @@ $role = $_SESSION['role'] ?? 'user';
 <body>
 <div class="container my-5">
   <h2 class="text-center fw-bold mb-4">⌨️ Typing Test Results</h2>
+
   <div class="row g-3 mb-4">
     <div class="col-md-3"><div class="card text-center shadow-sm"><div class="card-body"><h6 class="text-muted">WPM</h6><h3 id="wpm">0</h3></div></div></div>
     <div class="col-md-3"><div class="card text-center shadow-sm"><div class="card-body"><h6 class="text-muted">Accuracy</h6><h3 id="accuracy">0%</h3></div></div></div>
@@ -38,7 +42,13 @@ $role = $_SESSION['role'] ?? 'user';
 
   <div class="text-center mt-4">
     <a href="index.php" class="btn btn-outline-primary px-4">🔁 Try Again</a>
-    <button class="btn btn-outline-success px-4">💾 Save Result</button>
+
+    <?php if($loggedIn): ?>
+      <button class="btn btn-outline-success px-4" id="saveBtn">💾 Save Result</button>
+    <?php else: ?>
+      <button class="btn btn-outline-success px-4" id="loginSaveBtn">💾 Save Result</button>
+    <?php endif; ?>
+
     <button class="btn btn-outline-dark px-4" onclick="window.print()">🖨 Print</button>
   </div>
 </div>
@@ -50,6 +60,7 @@ if(!result || !result.time || result.time<=0){
   result = {wpm:0, accuracy:0, correct:0, incorrect:0, totalTyped:0, time:0};
 }
 
+// UI update
 document.getElementById("time").innerText = `${Math.floor(result.time/60)}:${(result.time%60).toString().padStart(2,"0")}`;
 document.getElementById("wpm").innerText = result.wpm;
 document.getElementById("accuracy").innerText = result.accuracy + "%";
@@ -58,6 +69,34 @@ document.getElementById("typed").innerText = result.totalTyped;
 document.getElementById("correct").innerText = result.correct;
 document.getElementById("incorrect").innerText = result.incorrect;
 document.getElementById("netSpeed").innerText = Math.max(result.wpm - result.incorrect,0);
+
+<?php if($loggedIn): ?>
+// Agar login hai
+document.getElementById("saveBtn").addEventListener("click", () => saveResult());
+
+// Agar login ke baad save=1 aaya hai → auto save
+<?php if($autoSave): ?>
+saveResult();
+<?php endif; ?>
+
+function saveResult() {
+  fetch("save_result.php", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(result)
+  })
+  .then(res => res.json())
+  .then(data => {
+    alert(data.message || "✅ Result saved successfully!");
+  })
+  .catch(err => console.error(err));
+}
+<?php else: ?>
+// Agar login nahi hai → Save pe click karne par login page redirect
+document.getElementById("loginSaveBtn").addEventListener("click", () => {
+  window.location.href = "login.php?redirect=result.php&save=1";
+});
+<?php endif; ?>
 </script>
 </body>
 </html>

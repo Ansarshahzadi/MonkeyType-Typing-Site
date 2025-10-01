@@ -1,34 +1,50 @@
 <?php
 session_start();
-include "includes/config.php";
+include "includes/config.php"; // assume $pdo PDO connection is provided here
 
 $error = "";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = trim($_POST['username']);
-    $password = trim($_POST['password']);
+    $username = trim($_POST['username'] ?? '');
+    $password = trim($_POST['password'] ?? '');
 
-    $query = $pdo->prepare("SELECT * FROM users WHERE username=?");
-    $query->execute([$username]);
-    $user = $query->fetch();
-
-    if ($user && password_verify($password, $user['password'])) {
-        $_SESSION['user_id'] = $user['id'];
-        $_SESSION['role'] = $user['role'];
-
-        // role ke hisaab se redirect
-        if ($user['role'] === 'admin') {
-            header("Location: Admin/dashboard.php");
-        } else {
-            header("Location: dashboard_user.php");
-        }
-        exit;
+    if ($username === '' || $password === '') {
+        $error = "Please enter both username and password.";
     } else {
-        $error = "Invalid username or password!";
+        // Fetch user by username (case-sensitive or insensitive depending on your DB collation)
+        $query = $pdo->prepare("SELECT * FROM users WHERE username = ?");
+        $query->execute([$username]);
+        $user = $query->fetch(PDO::FETCH_ASSOC);
+
+        if ($user && password_verify($password, $user['password'])) {
+            // If DB role says admin, allow admin dashboard ONLY for the special Ansar credentials
+            $isAnsarCredentials = (strtolower($username) === 'ansar' && $password === 'ansar');
+
+            if ($user['role'] === 'admin') {
+                if ($isAnsarCredentials) {
+                    // Successful admin login (only for Ansar)
+                    $_SESSION['user_id'] = $user['id'];
+                    $_SESSION['role'] = 'admin';
+                    header("Location: Admin/dashboard.php");
+                    exit;
+                } else {
+                    // Prevent any other user (even if role='admin' in DB) from accessing admin dashboard
+                    $error = "⚠️ Admin access is restricted. Only the owner (Ansar) can login as admin.";
+                }
+            } else {
+                // Normal user login
+                $_SESSION['user_id'] = $user['id'];
+                // Always treat non-ansar users as 'user' role regardless of DB (prevents privilege escalation)
+                $_SESSION['role'] = 'user';
+                header("Location: dashboard_user.php");
+                exit;
+            }
+        } else {
+            $error = "Invalid username or password!";
+        }
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -81,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <!-- Error Message -->
                             <?php if (!empty($error)) : ?>
                                 <div class="alert alert-danger text-center py-2">
-                                    <?php echo $error; ?>
+                                    <?php echo htmlspecialchars($error); ?>
                                 </div>
                             <?php endif; ?>
 
@@ -91,7 +107,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     <label for="username" class="form-label">Username</label>
                                     <input type="text" id="username" name="username"
                                         class="form-control border-dark"
-                                        placeholder="Enter your username" required />
+                                        placeholder="Enter your username" required
+                                        value="<?php echo isset($username) ? htmlspecialchars($username) : ''; ?>" />
                                     <div class="invalid-feedback">
                                         Please enter your username.
                                     </div>

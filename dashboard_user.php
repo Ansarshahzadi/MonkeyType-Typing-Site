@@ -38,8 +38,8 @@ $current_page = basename($_SERVER['PHP_SELF']); // current file ka naam
 
         .sidebar {
             width: 250px;
-            background: #f8f9fa;
-            color: #212529;
+            background-color: rgb(234, 88, 12);
+            color: #ffffffff;
             flex-shrink: 0;
             border-right: 1px solid #dee2e6;
         }
@@ -47,20 +47,21 @@ $current_page = basename($_SERVER['PHP_SELF']); // current file ka naam
         .sidebar a {
             display: block;
             padding: 12px 20px;
-            color: #495057;
+            color: #ffffffff;
             text-decoration: none;
         }
 
         .sidebar a:hover {
             background: #e9ecef;
-            color: #212529;
+            color: rgb(234, 88, 12);
         }
 
         .sidebar a.active {
-            background: #fff;
-            color: #0d6efd;
+            background-color: rgb(234, 88, 12);
+            color: #fff;
             font-weight: bold;
-            border-left: 4px solid #0d6efd;
+            border-left: 4px solid #fcfcfcff;
+            border-bottom: 1px solid white;
         }
 
         .sidebar h4 {
@@ -86,29 +87,7 @@ $current_page = basename($_SERVER['PHP_SELF']); // current file ka naam
 
 <body>
     <!-- Sidebar -->
-    <div class="sidebar">
-        <h4>User Panel</h4>
-        <a href="dashboard_user.php" class="<?php echo ($current_page == 'dashboard_user.php') ? 'active' : ''; ?>">Dashboard</a>
-        <a href="my_results.php" class="<?php echo ($current_page == 'my_results.php') ? 'active' : ''; ?>">My Results</a>
-        <a href="top10.php" class="<?php echo ($current_page == 'top10.php') ? 'active' : ''; ?>">Top 10 Typers</a>
-        <a href="profile.php" class="<?php echo ($current_page == 'profile.php') ? 'active' : ''; ?>">Profile</a>
-
-        <!-- Authentication Dropdown -->
-        <div class="dropdown">
-            <a class="dropdown-toggle <?php echo (in_array($current_page, ['login.php', 'register.php', 'forgot_password.php', 'reset_password.php', 'logout.php'])) ? 'active' : ''; ?>"
-                href="#" data-bs-toggle="collapse" data-bs-target="#authMenu" aria-expanded="false">
-                Authentication
-            </a>
-            <div class="collapse <?php echo (in_array($current_page, ['login.php', 'register.php', 'forgot_password.php', 'reset_password.php', 'logout.php'])) ? 'show' : ''; ?>" id="authMenu">
-                <a href="login.php" class="<?php echo ($current_page == 'login.php') ? 'active' : ''; ?>">Login</a>
-                <a href="register.php" class="<?php echo ($current_page == 'register.php') ? 'active' : ''; ?>">Register</a>
-                <a href="forgot_password.php" class="<?php echo ($current_page == 'forgot_password.php') ? 'active' : ''; ?>">Forgot Password</a>
-                <a href="recover_password.php" class="<?php echo ($current_page == 'recover_password.php') ? 'active' : ''; ?>">Recover Password</a>
-                <a href="reset_password.php" class="<?php echo ($current_page == 'reset_password.php') ? 'active' : ''; ?>">Reset Password</a>
-                <a href="logout.php" class="<?php echo ($current_page == 'logout.php') ? 'active text-danger' : 'text-danger'; ?>">Logout</a>
-            </div>
-        </div>
-    </div>
+<?php include "includes/sidebar.php"?>
 
     <!-- Main Content -->
     <div class="content">

@@ -17,6 +17,7 @@
     <a href="#" class="navbar-brand fw-bold fs-1">
       Typing<span style="color: rgb(234, 88, 12)">Board</span>
     </a>
+    <a href="login.php"><div class="btn btn-success">Login</div></a>
   </div>
 </nav>
 
@@ -34,9 +35,8 @@
 </div>
 
 <div class="text-center mt-3">
- 
   <button class="btn btn-success mt-2" id="startBtn">▶ Start Typing</button>
-    <button class="btn btn-secondary mt-2" id="startBtn"> ⏳ Time Left: <span id="timer">0:00</span><br /> </button>
+  <button class="btn btn-secondary mt-2"> ⏳ Time Left: <span id="timer">0:00</span><br /> </button>
   <button class="btn btn-danger mt-2" id="showResultBtn">⏹ Show Result</button>
 </div>
 
@@ -45,7 +45,7 @@
 </div>
 
 <!-- Custom Paragraph Box -->
-<div id="customParagraphBox" style="display:none; max-width:80%; margin:0 auto;">
+<div id="customParagraphBox" style="display:none;  max-width:80%; margin:0 auto;">
   <textarea id="customParagraph" rows="6" placeholder="Type or paste your custom paragraph here..." style="width:100%;"></textarea><br />
   <button class="btn btn-sm btn-warning mt-2" id="setParagraph">Set Paragraph</button>
 </div>
@@ -119,7 +119,11 @@ function startCountdown(){
   started = true; paused = false;
   clearInterval(interval);
   interval = setInterval(()=>{
-    if(!paused){ timeLeft--; timerDisplay.textContent = formatTime(timeLeft); if(timeLeft<=0){finishTest();} }
+    if(!paused){ 
+      timeLeft--; 
+      timerDisplay.textContent = formatTime(timeLeft); 
+      if(timeLeft<=0){finishTest();}
+    }
   },1000);
 }
 
@@ -138,8 +142,11 @@ document.addEventListener("keydown",e=>{
     if(e.key===spans[currentIndex].innerText){spans[currentIndex].style.color="lime";correct++;} 
     else {spans[currentIndex].style.color="red"; incorrect++;}
     currentIndex++;
-    if(currentIndex===spans.length && document.querySelector(".topbar span.active").id!=="zen") loadText(document.querySelector(".topbar span.active").id);
-  } else if(e.key==="Backspace" && currentIndex>0){currentIndex--; spans[currentIndex].style.color="#333";}
+    if(currentIndex===spans.length && document.querySelector(".topbar span.active").id!=="zen") 
+      loadText(document.querySelector(".topbar span.active").id);
+  } else if(e.key==="Backspace" && currentIndex>0){
+    currentIndex--; spans[currentIndex].style.color="#333";
+  }
 });
 
 // Start button
@@ -151,17 +158,23 @@ document.getElementById("startBtn").onclick = ()=>{
 // Show result
 document.getElementById("showResultBtn").onclick = finishTest;
 
+// ✅ Fixed finishTest() - words based WPM
 function finishTest(){
-  clearInterval(interval); started=false;
+  clearInterval(interval);
+  started=false;
+
   const totalTyped = correct+incorrect;
-  const actualTime = totalTimeSelected - timeLeft;
-  if(actualTime<=0){
-    alert("⚠️ Time corrupted! Please retry the test.");
-    return;
-  }
+  let actualTime = totalTimeSelected - timeLeft;
+  if(actualTime <= 0) actualTime = 1;
+
+  // words count from text typed till current index
+  const typedText = currentText.substring(0, currentIndex);
+  const wordsTyped = typedText.trim().split(/\s+/).filter(Boolean).length;
+
   const accuracy = totalTyped>0 ? Math.round(correct/totalTyped*100) : 0;
-  const wpm = Math.round(totalTyped/5/(actualTime/60));
-  const result = {wpm, accuracy, correct, incorrect, totalTyped, time:actualTime};
+  const wpm = Math.round(wordsTyped / (actualTime/60)); // ✅ words-based WPM
+
+  const result = {wpm, accuracy, correct, incorrect, totalTyped, wordsTyped, time:actualTime};
   localStorage.setItem("typingResult",JSON.stringify(result));
   window.location.href="result.php";
 }
